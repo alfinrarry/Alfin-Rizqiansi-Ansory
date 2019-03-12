@@ -23,6 +23,9 @@ Route::get('layouts',function(){
 Route::get('dashboard',function(){
     return view('dashboard.index');
 });  
+Route::get('layouts',function(){
+    return view('dashboard');
+});  
 
 
 
