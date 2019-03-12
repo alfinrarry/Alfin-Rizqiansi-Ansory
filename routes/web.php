@@ -12,9 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return ('welcome');
 });
 
 Route::resource('kategori', 'CategoryController');
+
+Route::get('layouts',function(){
+    return view('layouts.master');
+});  
+Route::get('dashboard',function(){
+    return view('dashboard.index');
+});  
+
+
 
 
