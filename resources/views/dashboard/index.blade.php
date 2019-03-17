@@ -1,4 +1,4 @@
-@extends ('layouts.master')
+@extends('dashboard')
 @section('content')
-    content
-    @show
+Kategori
+@endsection

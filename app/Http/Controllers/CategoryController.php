@@ -14,8 +14,26 @@ class CategoryController extends Controller
     public function index()
     {
         $kategoris=Category::all();
-        return view('page_kategori',compact('kategoris'));      
+        return view('kategori.index',compact('kategoris'));      
     }
+
+    public function search(Request $request)
+    {
+        $search= $request->search;
+        $kategoris=Category::where('category_name','like',"%".$search."%")->paginate(); 
+       
+
+        return view('kategori.index',compact('kategoris'));     
+    } 
+
+    public function pagination(Request $request)
+    {
+        $pagination= $request->pagination;
+        $kategoris=Category::where('category_name','like',"%".$search."%")->pagination(); 
+       
+        $pagination->appends($request->only('keyword'));
+        return view('kategori.index',compact('kategoris'));     
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +42,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori.create');
     }
 
     /**
@@ -35,7 +53,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            
+            'category_name' => 'required',
+            'remarks' => 'required',
+            'tglInput'=> 'required'
+        ]);
+        $kategoris = new Category([
+            'category_name' => $request->get('category_name'),
+            'remarks'=> $request->get('remarks'),
+            'tglInput'=> $request->get('tglInput')
+          ]);
+          $kategoris->save();
+      
+
+        return redirec('kategori.index')->with('message', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -57,7 +89,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategoris = Category::find($id);
+
+        return view('kategori.edit', compact('kategoris'));
     }
 
     /**
@@ -69,7 +103,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'category_id'=> 'required',
+            'category_name' => 'required',
+            'remarks' => 'required',
+            'tglInput'=> 'required'
+        ]);
+
+        $kategoris = Category::findOrFail($id)->update($request->all());
+
+        return redirect()->route('kategori.index')->with('message', 'Data Berhasil di Ubah!');
     }
 
     /**
@@ -80,6 +123,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kategoris = Category::findOrFail($id)->delete();
+        return redirect()->route('kategori.index')->with('message', 'Data berhasil dihapus!');
     }
 }

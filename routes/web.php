@@ -25,7 +25,15 @@ Route::get('dashboard',function(){
 });  
 Route::get('layouts',function(){
     return view('dashboard');
-});  
+}); 
+
+Route::resource('kategori', 'CategoryController');
+
+Route::get('search', 'CategoryController@search');
+
+Route::get('create', 'CategoryController@create');
+Route::get('edit', 'CategoryController@edit');
+
 
 
 
