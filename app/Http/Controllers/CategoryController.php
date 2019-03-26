@@ -100,17 +100,20 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
-        DB::table('categories')->where('category_id',$request->id)->update([
+        /*DB::table('categories')->where('category_id',$request->id)->update([
             'category_id'=> $request->category_name,
             'category_name' => $request->category_name,
             'remarks' => $request->remarks,
             'tglInput'=> $request->tglInput
-        ]);
+        ]);*/
 
-      
-
+        $kategori = Category::find($id);
+        $kategori->category_name = $request->get('category_name');
+        $kategori->remarks = $request->get('remarks');
+        $kategori->tglInput = $request->get('tglInput');
+        $kategori->save();
         return redirect('/kategori')->with('message', 'Data Berhasil Di Tambahkan');   
      }
 

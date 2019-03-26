@@ -3,7 +3,8 @@
 @section('content')
 <h4>Ubah Data</h4>
 @foreach($kategoris as $data_kategori)
-<form action="../update" method="post">
+<form action="{{route('kategori.update',$data_kategori->category_id)}}" method="post">
+@method('PATCH')
 {{ csrf_field() }}
 <input type="hidden" name="category_id" value="{{ $data_kategori->category_id }}"> <br/>
 
