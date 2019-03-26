@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     /**
@@ -13,8 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $kategoris=Category::all();
-        return view('kategori.index',compact('kategoris'));      
+        $kategoris = DB::table('categories')->get();
+        return view('kategori.index',['kategoris'=>$kategoris]);    
+        
     }
 
     public function search(Request $request)
@@ -42,7 +44,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('kategori.create');
+        return view('kategori/create');
     }
 
     /**
@@ -53,21 +55,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            
-            'category_name' => 'required',
-            'remarks' => 'required',
-            'tglInput'=> 'required'
+        DB::table('categories')->insert([
+            'category_id' => $request->category_id,
+            'category_name' => $request->category_name,
+            'remarks' => $request->remarks,
+            'tglInput' => $request->tglInput
         ]);
-        $kategoris = new Category([
-            'category_name' => $request->get('category_name'),
-            'remarks'=> $request->get('remarks'),
-            'tglInput'=> $request->get('tglInput')
-          ]);
-          $kategoris->save();
+        // alihkan halaman ke halaman pegawai
+        return redirect('/kategori')->with('message', 'Data Berhasil Di Tambahkan');
       
 
-        return redirec('kategori.index')->with('message', 'Data Berhasil Di Tambahkan');
+        
     }
 
     /**
@@ -89,9 +87,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $kategoris = Category::find($id);
+        $kategoris = DB::table('categories')->where('category_id',$id)->get();
+        return view('/kategori/edit',['kategoris' => $kategoris]);
 
-        return view('kategori.edit', compact('kategoris'));
+        
     }
 
     /**
@@ -101,19 +100,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-            'category_id'=> 'required',
-            'category_name' => 'required',
-            'remarks' => 'required',
-            'tglInput'=> 'required'
+        DB::table('categories')->where('category_id',$request->id)->update([
+            'category_id'=> $request->category_name,
+            'category_name' => $request->category_name,
+            'remarks' => $request->remarks,
+            'tglInput'=> $request->tglInput
         ]);
 
-        $kategoris = Category::findOrFail($id)->update($request->all());
+      
 
-        return redirect()->route('kategori.index')->with('message', 'Data Berhasil di Ubah!');
-    }
+        return redirect('/kategori')->with('message', 'Data Berhasil Di Tambahkan');   
+     }
 
     /**
      * Remove the specified resource from storage.
@@ -121,9 +120,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        $kategoris = Category::findOrFail($id)->delete();
-        return redirect()->route('kategori.index')->with('message', 'Data berhasil dihapus!');
+        DB::table('categories')->where('category_id',$id)->delete();
+        return redirect('/kategori')->with('message', 'Data berhasil dihapus!');
+        
     }
 }

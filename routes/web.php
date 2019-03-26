@@ -31,8 +31,15 @@ Route::resource('kategori', 'CategoryController');
 
 Route::get('search', 'CategoryController@search');
 
-Route::get('create', 'CategoryController@create');
-Route::get('edit', 'CategoryController@edit');
+Route::get('/kategori/create','CategoryController@create');
+
+Route::post('/kategori/store','CategoryController@store');
+
+Route::get('/kategori/edit/{id}','CategoryController@edit');
+
+Route::post('/kategori/update','CategoryController@update');
+
+Route::get('/kategori/delete/{id}','CategoryController@delete');
 
 
 

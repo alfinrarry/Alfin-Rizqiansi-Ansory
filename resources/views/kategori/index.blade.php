@@ -519,7 +519,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Responsive Hover Table</h3><br>
-              <a href="/Alfin/public/create">Tambah Data</a>
+              <a href="/Alfin/public/kategori/create">Tambah Data</a>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -553,9 +553,10 @@
                     <td>{{$data_kategori->tglInput}}</td>
 
                     <td>
-	                	<a href="/Alfin/public/edit ">Edit</a>
+                   
+                    <a href="./kategori/edit/{{ $data_kategori->category_id }}">Edit</a>
 		                |
-	                	<a href="/kategori/delete/{{ $data_kategori->category_id }}">Hapus</a>
+	                	<a href="./kategori/delete/{{ $data_kategori->category_id }}">Hapus</a>
               	</td>
                     @endforeach
                </tr>
