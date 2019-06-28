@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 55 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-11042,-377.169)">
+        <g transform="matrix(1,0,0,0.460667,10615,0)">
+            <g id="Checkbox-Selected" serif:id="Checkbox Selected" transform="matrix(2.16259,0,0,4.69447,124.206,-6316.84)">
+                <path id="Base" d="M165,1525C165,1522.24 162.76,1520 160,1520L145,1520C142.24,1520 140,1522.24 140,1525L140,1540C140,1542.76 142.24,1545 145,1545L160,1545C162.76,1545 165,1542.76 165,1540L165,1525Z" style="fill:rgb(245,77,39);"/>
+                <path id="Checked-Icon" serif:id="Checked Icon" d="M158.225,1527.31L150.108,1535.5L146.764,1532.12C146.36,1531.71 145.705,1531.71 145.301,1532.12C144.897,1532.53 144.897,1533.19 145.301,1533.6L149.355,1537.7C149.563,1537.9 149.836,1538.01 150.108,1538C150.38,1538.01 150.654,1537.9 150.861,1537.7L159.688,1528.78C160.092,1528.38 160.092,1527.71 159.688,1527.31C159.284,1526.9 158.629,1526.9 158.225,1527.31Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>

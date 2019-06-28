@@ -1,0 +1,54 @@
+.bootstrap-switch {
+  display: block;
+}
+.bootstrap-switch .bootstrap-switch-container {
+	border-radius: 2px;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-on {
+	border-bottom-left-radius: 2px;
+	border-top-left-radius: 2px;
+}
+
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-label,
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label {
+	border-bottom-right-radius: 2px;
+	border-top-right-radius: 2px;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off {
+	border-bottom-right-radius: 2px;
+	border-top-right-radius: 2px;
+}
+/* .dropify-wrapper{
+	height: 500px;
+} */
+.dropify-render img{
+	height: 100%;
+	width: 100%;
+}
+.frame-slider-home{
+	border-style: dotted;
+	height:653px;
+}
+.frame-slider-home-message{
+	text-align: center;
+    margin-top: 20rem;
+}
+.frame-slider-home-message span{
+	font-size: 40px;
+}
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+	.frame-slider-home{
+		border-style: dotted;
+		height:253px;
+	}
+	.frame-slider-home-message{
+		text-align: center;
+		margin-top: 5rem;
+	}
+	.frame-slider-home-message span{
+		font-size: 40px;
+	}
+}

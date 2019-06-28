@@ -1,0 +1,1 @@
+<footer class="footer text-center">Copyright &copy; 2018 All Rights Reserved<a href="https://profileimage.studio/"> Profile Image Studio</a>.</footer>
